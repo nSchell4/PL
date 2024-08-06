@@ -59,6 +59,7 @@ val test10 = check_pat (Variable("x")) = true
 val cp1 = check_pat (UnitP) = true
 val cp2 = check_pat (TupleP[Variable("x"), Variable("x"), UnitP, ConstP 3]) =
   false
+val cp3 = check_pat (TupleP[Variable "x",ConstructorP ("wild",Wildcard)]) = true
 
 val test11 = match (Const(1), UnitP) = NONE
 val m1 = match (Const 5, Wildcard) = SOME []  

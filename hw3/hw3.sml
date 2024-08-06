@@ -92,7 +92,8 @@ fun check_pat p =
              | x::xs' => (List.exists (fn y => y=x) xs') orelse contains_repeats xs'
       fun extract_vars pat = 
           case pat of 
-               Variable x => [x]
+               Wildcard => [] 
+             | Variable x => [x]
              | UnitP => []
              | ConstP x => []
              | TupleP xs => List.foldl (fn (y, ys) => ys @ extract_vars y) [] xs
